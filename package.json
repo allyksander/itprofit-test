@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "webpack serve --env development",
     "build": "webpack",
-    "lint": "eslint . --ext .ts"
+    "lint": "eslint . --ext .ts",
+    "server": "node server/index.js"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.62.0",
@@ -26,6 +27,8 @@
     "webpack-remove-empty-scripts": "^0.7.3"
   },
   "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.1",
     "sass-resources-loader": "^2.2.5"
   }
 }
