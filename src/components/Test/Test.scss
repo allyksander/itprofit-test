@@ -1,0 +1,7 @@
+h1 {
+  transition: color $time ease-in-out;
+
+  @include hover {
+    color: orange;
+  }
+}
