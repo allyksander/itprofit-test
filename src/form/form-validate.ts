@@ -1,25 +1,26 @@
 import Inputmask from 'inputmask';
+import { type FormValidateInitProps } from './types';
 
-export const formValidateInit = () => {
+export const formValidateInit = async (fromValidateList: FormValidateInitProps[]) => {
   const dataAction = 'data-action';
   const inputPhone = 'input-phone';
   const requiredSelector = '[required]';
   const validataForm = 'validate-form';
   const validateText = 'validate-text';
   const validateEmail = 'validate-email';
+  const invelidValidationText = 'Поле заполнено некорректно';
   const formFieldClass = 'form-field';
   const validClass = `${formFieldClass}--valid`;
   const invalidClass = `${formFieldClass}--invalid`;
   const wrapperSelector = `.${formFieldClass}`;
-  const formSubmited = 'form-submited';
-  const formSubmitedError = `${formSubmited}--error`;
-  const formSubmitedSucces = `${formSubmited}--success`;
 
-  const checkNodeValidity = (node: HTMLInputElement | HTMLTextAreaElement) => {
+  const isValidNode = (node: HTMLInputElement | HTMLTextAreaElement) => node.validity.valid;
+
+  const setFormFieldClasses = (node: HTMLInputElement | HTMLTextAreaElement) => {
     const wrapper = node.closest(wrapperSelector);
 
     if (wrapper) {
-      node.validity.valid ? wrapperSetValid(wrapper) : wrapperSetInvalid(wrapper);
+      isValidNode(node) ? wrapperSetValid(wrapper) : wrapperSetInvalid(wrapper);
     }
   };
 
@@ -37,10 +38,10 @@ export const formValidateInit = () => {
     const nodeValue = node.value;
 
     nodeValue.length > 0 && (nodeValue.match(/[a-z0-9]\@.+[a-z0-9-]+\.([a-z]{2,4}\.)?[a-z]{2,4}/g) || []).length !== 1
-      ? node.setCustomValidity('Заполните это поле')
+      ? node.setCustomValidity(invelidValidationText)
       : node.setCustomValidity('');
 
-    checkNodeValidity(node);
+    setFormFieldClasses(node);
   };
 
   const inputPhoneInit = (node: HTMLInputElement) => {
@@ -51,20 +52,20 @@ export const formValidateInit = () => {
       clearIncomplete: true,
       oncleared: function () {
         if (node.required) {
-          node.setCustomValidity('Invalid field');
-          checkNodeValidity(node);
+          node.setCustomValidity(invelidValidationText);
+          setFormFieldClasses(node);
         }
       },
       onincomplete: function () {
         if (node.required) {
-          node.setCustomValidity('Invalid field');
-          checkNodeValidity(node);
+          node.setCustomValidity(invelidValidationText);
+          setFormFieldClasses(node);
         }
       },
       oncomplete: function () {
         if (node.required) {
           node.setCustomValidity('');
-          checkNodeValidity(node);
+          setFormFieldClasses(node);
         }
       },
       placeholder: '',
@@ -95,7 +96,7 @@ export const formValidateInit = () => {
       eTarget
         .getAttribute(dataAction)
         ?.split(' ')
-        ?.map((item) => {
+        ?.map(async (item) => {
           if (item === validataForm) {
             const form = targetNode.closest('form');
             const selectors = [
@@ -103,15 +104,16 @@ export const formValidateInit = () => {
               `[${dataAction}*="${validateEmail}"]`,
               `[is="${inputPhone}"]${requiredSelector}`,
             ];
-            const toValidateInputs = form?.querySelectorAll(selectors.join(', '));
 
             if (form) {
-              form.classList.remove(formSubmitedSucces);
-              form.classList.add(formSubmitedError);
-            }
+              const toValidateInputs = [...form.querySelectorAll(selectors.join(', '))];
+              toValidateInputs.map((item) => setFormFieldClasses(item as HTMLInputElement | HTMLTextAreaElement));
 
-            if (toValidateInputs?.length) {
-              [...toValidateInputs].map((item) => checkNodeValidity(item as HTMLInputElement | HTMLTextAreaElement));
+              fromValidateList.map(({ formRole, formSubmitHandler }) => {
+                if (form.dataset.formRole === formRole) {
+                  formSubmitHandler(form);
+                }
+              });
             }
           }
         });
@@ -126,7 +128,7 @@ export const formValidateInit = () => {
 
       actiones?.split(' ').map((item) => {
         if (item === validateText) {
-          checkNodeValidity(eTarget);
+          setFormFieldClasses(eTarget);
         }
 
         if (item === validateEmail) {
@@ -137,14 +139,8 @@ export const formValidateInit = () => {
   });
 
   document.addEventListener('submit', (event: SubmitEvent) => {
-    event.preventDefault();
-
-    const form = event.target as HTMLFormElement | undefined;
-
-    if (form) {
-      form.reset();
-      form.classList.remove(formSubmitedError);
-      form.classList.add(formSubmitedSucces);
+    if ((event.target as Element).classList.contains('form')) {
+      event.preventDefault();
     }
   });
 };

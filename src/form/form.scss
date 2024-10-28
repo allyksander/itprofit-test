@@ -32,6 +32,7 @@
     &--success {
       .form-submit__message {
         color: $success-color;
+        text-align: center;
       }
     }
   }
@@ -134,9 +135,14 @@
   }
 
   &__message {
+    display: grid;
+    gap: 8px;
     font-size: 0px;
     opacity: 0;
-    transition: color $time ease-in-out;
     transition: font-size $time ease-in-out $time, opacity $time ease-in-out;
+  }
+
+  p {
+    margin: 0;
   }
 }
