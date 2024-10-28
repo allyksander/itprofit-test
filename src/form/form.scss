@@ -1,0 +1,142 @@
+.form {
+  display: grid;
+  gap: 24px;
+  max-width: 768px;
+  margin: 0 auto;
+  padding: 20px 40px;
+  border: 1px solid $border-color;
+  border-radius: $border-radius * 2;
+
+  @include media-tablet {
+    padding: 20px;
+    gap: 16px;
+    border-radius: $border-radius;
+  }
+
+  &-submited {
+    &--error,
+    &--success {
+      .form-submit__message {
+        transition: font-size $time ease-in-out, opacity $time ease-in-out $time;
+        font-size: 14px;
+        opacity: 1;
+      }
+    }
+
+    &--error {
+      .form-submit__message {
+        color: $error-color;
+      }
+    }
+
+    &--success {
+      .form-submit__message {
+        color: $success-color;
+      }
+    }
+  }
+}
+
+.form-title {
+  margin: 0;
+  text-align: center;
+  font-size: 24px;
+
+  @include media-tablet {
+    font-size: 20px;
+  }
+}
+
+.form-info {
+  font-size: 14px;
+
+  p {
+    margin: 0;
+
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
+  }
+}
+
+.form-field {
+  display: grid;
+  gap: 8px;
+
+  &__name {
+    order: 1;
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  &__input {
+    order: 2;
+    padding: 8px;
+    border-radius: $border-radius;
+    border: 1px solid $border-color;
+    transition: border-color $time ease-in-out;
+    outline: none;
+
+    &[required] {
+      & ~ .form-field__name {
+        &::after {
+          content: ' *';
+        }
+      }
+    }
+
+    &:focus {
+      border-color: $black-color;
+    }
+
+    &:is(textarea) {
+      resize: vertical;
+      height: 100px;
+    }
+  }
+
+  &__error {
+    order: 3;
+    font-size: 0px;
+    opacity: 0;
+    color: $error-color;
+    transition: font-size $time ease-in-out $time, opacity $time ease-in-out;
+  }
+
+  &--invalid {
+    .form-field {
+      &__input {
+        border-color: $error-color;
+      }
+
+      &__error {
+        transition: font-size $time ease-in-out, opacity $time ease-in-out $time;
+        font-size: 12px;
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.form-submit {
+  &__button {
+    justify-self: center;
+    padding: 8px 16px;
+    border-radius: $border-radius;
+    border: 1px solid $border-color;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color $time ease-in-out;
+
+    @include hover() {
+      background-color: $border-color;
+    }
+  }
+
+  &__message {
+    font-size: 0px;
+    opacity: 0;
+    transition: color $time ease-in-out;
+    transition: font-size $time ease-in-out $time, opacity $time ease-in-out;
+  }
+}

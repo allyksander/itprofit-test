@@ -10,6 +10,7 @@
     "server": "node server/index.js"
   },
   "devDependencies": {
+    "@types/inputmask": "^5.0.7",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "@typescript-eslint/parser": "^5.62.0",
     "clean-webpack-plugin": "^4.0.0",
@@ -29,6 +30,7 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.21.1",
+    "inputmask": "^5.0.9",
     "sass-resources-loader": "^2.2.5"
   }
 }

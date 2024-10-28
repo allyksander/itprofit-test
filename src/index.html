@@ -4,10 +4,51 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" type="image/x-icon" href="./assets/favicon.ico" />
-    <title>Document</title>
+    <title>Itprofit-test</title>
   </head>
   <body>
-    <h1>Test</h1>
-    <img src="./assets/favicon.ico" alt="" />
+    <main class="main">
+      <div class="container">
+        <form class="form" action="">
+          <h1 class="form-title">Регистрация</h1>
+          <div class="form-info">
+            <p>* &mdash; обязательные для заполнения поля.</p>
+          </div>
+          <label class="form-field">
+            <input class="form-field__input" type="text" name="name" required data-action="validate-text" />
+            <span class="form-field__name">Имя</span>
+            <span class="form-field__error">Это поля обязательное для заполненеия</span>
+          </label>
+          <label class="form-field">
+            <input class="form-field__input" type="email" name="email" required data-action="validate-email" />
+            <span class="form-field__name">E-mail</span>
+            <span class="form-field__error">Это поля обязательное для заполненеия</span>
+          </label>
+          <label class="form-field">
+            <input
+              class="form-field__input"
+              type="phone"
+              name="phone"
+              required
+              placeholder="+375 (__) ___-__-__"
+              data-mask="+375 (99) 999-99-99"
+              data-placeholder="+375 (__) ___-__-__"
+              is="input-phone"
+            />
+            <span class="form-field__name">Телефон</span>
+            <span class="form-field__error">Это поля обязательное для заполненеия</span>
+          </label>
+          <label class="form-field">
+            <textarea class="form-field__input" name="message" required data-action="validate-text"></textarea>
+            <span class="form-field__name">Сообщени</span>
+            <span class="form-field__error">Это поля обязательное для заполненеия</span>
+          </label>
+          <div class="form-field form-submit">
+            <button class="form-submit__button" type="submit" data-action="validate-form">Отправить</button>
+            <span class="form-submit__message"></span>
+          </div>
+        </form>
+      </div>
+    </main>
   </body>
 </html>

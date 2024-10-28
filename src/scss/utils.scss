@@ -1,4 +1,17 @@
+$font: 'opensans';
 $time: 0.3s;
+$border-radius: 4px;
+$black-color: #444;
+$white-color: #fff;
+$border-color: lightgray;
+$error-color: orangered;
+$success-color: limegreen;
+
+@mixin media-tablet() {
+  @media screen and (max-width: 1024px) {
+    @content;
+  }
+}
 
 @mixin hover() {
   @media screen and (hover: hover) {

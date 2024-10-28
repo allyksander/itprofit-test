@@ -1,13 +1,30 @@
+@import './scss/fonts.scss';
+@import './form/form.scss';
+
 * {
   box-sizing: border-box;
 }
 
 body {
+  font-family: $font;
   margin: 0;
+  color: $black-color;
 }
 
-ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
+.main {
+  padding: 40px 0;
+
+  @include media-tablet {
+    padding: 20px 0;
+  }
+}
+
+.container {
+  max-width: 1680px;
+  margin: 0 auto;
+  padding: 0 40px;
+
+  @include media-tablet {
+    padding: 0 20px;
+  }
 }

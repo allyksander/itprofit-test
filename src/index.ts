@@ -1,3 +1,3 @@
-import { test } from './components/Test/Test';
+import { formValidateInit } from './form/form-validate';
 
-test();
+formValidateInit();
