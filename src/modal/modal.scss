@@ -95,6 +95,7 @@
   &__img {
     display: block;
     width: 33.33%;
+    height: auto;
     margin: 0 auto 16px;
 
     @include media-tablet {
