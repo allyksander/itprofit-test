@@ -7,7 +7,7 @@ $border-color: lightgray;
 $error-color: orangered;
 $success-color: limegreen;
 
-@mixin media-tablet() {
+@mixin media-tablet {
   @media screen and (max-width: 1024px) {
     @content;
   }

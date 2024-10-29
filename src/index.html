@@ -50,7 +50,167 @@
             <span class="form-submit__message"></span>
           </div>
         </form>
+        <div class="buttons-wrapper">
+          <h3 class="buttons-wrapper__title">
+            Примечание: Отступы на кнопке заданы для того, чтобы на странице появился скролл
+          </h3>
+          <ul class="buttons-wrapper__list">
+            <li class="buttons-wrapper__list-item">
+              <!-- NOTE: Object "modal" in "onclick="modal.showModal()" is an ID of modal for showing -->
+              <button class="button" onclick="modal.showModal()">Модальное окно (HTML/CSS only)</button>
+            </li>
+            <li class="buttons-wrapper__list-item">
+              <button class="button" data-action="modal-open" data-open-modal-id="modal-js">
+                Модальное окно (+ JS для удобства пользователей)
+              </button>
+            </li>
+          </г>
+        </div>
       </div>
     </main>
+    <!-- NOTE: Here is an ID-->
+    <dialog id="modal" class="modal">
+      <!-- NOTE: Object "modal" in "onclick="modal.showModal()" is an ID of modal for showing -->
+      <button class="modal__close" onclick="modal.close()"></button>
+      <div class="modal__inner">
+        <div class="modal__content">
+          <div class="container">
+            <h2 class="modal__title">Заголовок модального окна</h2>
+            <img src="./assets/favicon.ico" class="modal__img" alt="" />
+            <div class="modal__text">
+              <p>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel amet atque recusandae, qui in impedit
+                nobis voluptates reiciendis labore, provident temporibus consequuntur dolorum sed numquam! Quas iusto
+                provident odit officiis?
+              </p>
+              <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorum assumenda, odit omnis pariatur
+                veritatis ratione accusantium fugit, totam, consequatur cumque enim! Odit explicabo dicta minima sit
+                vero. Ea, hic unde.
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium expedita voluptates esse officia
+                autem laboriosam facere eum ea. Natus delectus aut unde aspernatur. Dolores ratione enim labore dicta
+                fugit consequuntur?
+              </p>
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero autem nisi numquam animi doloremque
+                vel, non saepe sed, eius perspiciatis, id ea fugiat eos. Commodi enim vel nam nobis suscipit?
+              </p>
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatibus nemo modi incidunt quisquam natus
+                accusamus distinctio ipsa maiores numquam quia perferendis voluptatem reprehenderit inventore enim
+                obcaecati harum hic, delectus repellendus.
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi optio sint, soluta ipsum voluptate
+                accusantium impedit neque architecto sapiente ea blanditiis odio ipsam placeat voluptas! Alias aliquam
+                nulla sit vel.
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel amet atque recusandae, qui in impedit
+                nobis voluptates reiciendis labore, provident temporibus consequuntur dolorum sed numquam! Quas iusto
+                provident odit officiis?
+              </p>
+              <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorum assumenda, odit omnis pariatur
+                veritatis ratione accusantium fugit, totam, consequatur cumque enim! Odit explicabo dicta minima sit
+                vero. Ea, hic unde.
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium expedita voluptates esse officia
+                autem laboriosam facere eum ea. Natus delectus aut unde aspernatur. Dolores ratione enim labore dicta
+                fugit consequuntur?
+              </p>
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero autem nisi numquam animi doloremque
+                vel, non saepe sed, eius perspiciatis, id ea fugiat eos. Commodi enim vel nam nobis suscipit?
+              </p>
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatibus nemo modi incidunt quisquam natus
+                accusamus distinctio ipsa maiores numquam quia perferendis voluptatem reprehenderit inventore enim
+                obcaecati harum hic, delectus repellendus.
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi optio sint, soluta ipsum voluptate
+                accusantium impedit neque architecto sapiente ea blanditiis odio ipsam placeat voluptas! Alias aliquam
+                nulla sit vel.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </dialog>
+    <dialog data-modal-id="modal-js" class="modal">
+      <button class="modal__close"></button>
+      <div class="modal__inner">
+        <div class="modal__content">
+          <div class="container">
+            <h2 class="modal__title">Заголовок модального окна</h2>
+            <img src="./assets/favicon.ico" class="modal__img" alt="" />
+            <div class="modal__text">
+              <p>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel amet atque recusandae, qui in impedit
+                nobis voluptates reiciendis labore, provident temporibus consequuntur dolorum sed numquam! Quas iusto
+                provident odit officiis?
+              </p>
+              <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorum assumenda, odit omnis pariatur
+                veritatis ratione accusantium fugit, totam, consequatur cumque enim! Odit explicabo dicta minima sit
+                vero. Ea, hic unde.
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium expedita voluptates esse officia
+                autem laboriosam facere eum ea. Natus delectus aut unde aspernatur. Dolores ratione enim labore dicta
+                fugit consequuntur?
+              </p>
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero autem nisi numquam animi doloremque
+                vel, non saepe sed, eius perspiciatis, id ea fugiat eos. Commodi enim vel nam nobis suscipit?
+              </p>
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatibus nemo modi incidunt quisquam natus
+                accusamus distinctio ipsa maiores numquam quia perferendis voluptatem reprehenderit inventore enim
+                obcaecati harum hic, delectus repellendus.
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi optio sint, soluta ipsum voluptate
+                accusantium impedit neque architecto sapiente ea blanditiis odio ipsam placeat voluptas! Alias aliquam
+                nulla sit vel.
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel amet atque recusandae, qui in impedit
+                nobis voluptates reiciendis labore, provident temporibus consequuntur dolorum sed numquam! Quas iusto
+                provident odit officiis?
+              </p>
+              <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorum assumenda, odit omnis pariatur
+                veritatis ratione accusantium fugit, totam, consequatur cumque enim! Odit explicabo dicta minima sit
+                vero. Ea, hic unde.
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium expedita voluptates esse officia
+                autem laboriosam facere eum ea. Natus delectus aut unde aspernatur. Dolores ratione enim labore dicta
+                fugit consequuntur?
+              </p>
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero autem nisi numquam animi doloremque
+                vel, non saepe sed, eius perspiciatis, id ea fugiat eos. Commodi enim vel nam nobis suscipit?
+              </p>
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatibus nemo modi incidunt quisquam natus
+                accusamus distinctio ipsa maiores numquam quia perferendis voluptatem reprehenderit inventore enim
+                obcaecati harum hic, delectus repellendus.
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi optio sint, soluta ipsum voluptate
+                accusantium impedit neque architecto sapiente ea blanditiis odio ipsam placeat voluptas! Alias aliquam
+                nulla sit vel.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </dialog>
   </body>
 </html>

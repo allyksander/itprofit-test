@@ -1,0 +1,127 @@
+.modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  max-width: 100vw;
+  max-height: 100dvh;
+  width: 100vw;
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0px;
+  border: none;
+  background: rgba($color: $black-color, $alpha: 0.5);
+  overscroll-behavior: contain;
+  visibility: hidden;
+  overflow: hidden;
+  user-select: text;
+  opacity: 0;
+  transition: opacity $time ease-in-out, visibility $time ease-in-out;
+
+  &__close {
+    position: fixed;
+    right: 0;
+    top: 0;
+    margin: 20px;
+    width: 30px;
+    height: 30px;
+    background: $white-color;
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+    z-index: 2;
+    cursor: pointer;
+
+    @include media-tablet {
+      margin: 10px;
+    }
+
+    &::before,
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 75%;
+      height: 3px;
+      border-radius: 3px;
+      background-color: $border-color;
+      transition: background-color $time ease-in-out;
+      pointer-events: none;
+    }
+
+    &::before {
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    &::after {
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+
+    @include hover() {
+      &::before,
+      &::after {
+        background-color: $black-color;
+      }
+    }
+  }
+
+  &__inner {
+    width: 100vw;
+    max-height: 100%;
+    padding: 20px;
+    overflow: auto;
+    overscroll-behavior: contain;
+  }
+
+  &__content {
+    position: relative;
+    max-width: 768px;
+    margin: 0 auto;
+    padding: 20px 0;
+    border-radius: $border-radius * 2;
+    border: 1px solid $border-color;
+    background: $white-color;
+    z-index: 1;
+  }
+
+  &__title {
+    margin: 0 0 16px;
+    text-align: center;
+  }
+
+  &__img {
+    display: block;
+    width: 33.33%;
+    margin: 0 auto 16px;
+
+    @include media-tablet {
+      width: 50%;
+    }
+  }
+
+  &__text {
+    p {
+      margin: 0;
+
+      &:not(:last-child) {
+        margin-bottom: 8px;
+      }
+    }
+  }
+
+  &[open] {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &::backdrop {
+    display: none;
+  }
+}
+
+body.overflow-hidden {
+  overflow: hidden;
+}

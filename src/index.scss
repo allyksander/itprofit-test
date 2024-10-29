@@ -1,5 +1,6 @@
 @import './scss/fonts.scss';
 @import './form/form.scss';
+@import './modal/modal.scss';
 
 * {
   box-sizing: border-box;
@@ -9,6 +10,8 @@ body {
   font-family: $font;
   margin: 0;
   color: $black-color;
+  width: 100vw;
+  overflow-x: hidden;
 }
 
 .main {
@@ -26,5 +29,50 @@ body {
 
   @include media-tablet {
     padding: 0 20px;
+  }
+}
+
+.button {
+  min-width: 150px;
+  padding: 8px 16px;
+  border-radius: $border-radius;
+  border: 1px solid $border-color;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color $time ease-in-out;
+
+  @include hover() {
+    background-color: $border-color;
+  }
+}
+
+.buttons-wrapper {
+  display: grid;
+  gap: 16px;
+  margin-bottom: 50vh;
+
+  &__title {
+    margin: 64px 0 24px;
+    text-align: center;
+  }
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    list-style: none;
+  }
+
+  &__list-item {
+    @include media-tablet {
+      flex-grow: 1;
+    }
+  }
+
+  .button {
+    width: 100%;
   }
 }
