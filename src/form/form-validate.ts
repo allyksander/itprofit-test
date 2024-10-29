@@ -10,6 +10,7 @@ export const formValidateInit = async (fromValidateList: FormValidateInitProps[]
   const validateEmail = 'validate-email';
   const invelidValidationText = 'Поле заполнено некорректно';
   const formFieldClass = 'form-field';
+  const loadingButtonClass = 'loading';
   const validClass = `${formFieldClass}--valid`;
   const invalidClass = `${formFieldClass}--invalid`;
   const wrapperSelector = `.${formFieldClass}`;
@@ -107,12 +108,15 @@ export const formValidateInit = async (fromValidateList: FormValidateInitProps[]
 
             if (form) {
               const toValidateInputs = [...form.querySelectorAll(selectors.join(', '))];
-              toValidateInputs.map((item) => setFormFieldClasses(item as HTMLInputElement | HTMLTextAreaElement));
 
-              fromValidateList.map(({ formRole, formSubmitHandler }) => {
+              toValidateInputs.map((item) => setFormFieldClasses(item as HTMLInputElement | HTMLTextAreaElement));
+              targetNode.classList.add(loadingButtonClass);
+
+              fromValidateList.map(async ({ formRole, formSubmitHandler }) => {
                 if (form.dataset.formRole === formRole) {
-                  formSubmitHandler(form);
+                  await formSubmitHandler(form);
                 }
+                targetNode.classList.remove(loadingButtonClass);
               });
             }
           }
